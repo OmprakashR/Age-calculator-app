@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+
+<!--custome css and font-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+
+  <title>Frontend Mentor | Age calculator app</title>
+
+</head>
+
+<body>
+
+  <main class="container">
+
+<div  class="agecalculator">
+  <h1 class="hide"></h1>
+  <form name="frm">
+    <div class="base">
+
+      <div class="block">
+        <p name="titleD" class="fw-400" id="titleD">DAY</p>
+        <input type="number" name="date" id="date" placeholder="dd" required="required" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;">
+        <p id="dateerrormsg" class="error-msg"></p>
+      </div>
+      <div class="block">
+        <p id="titleM" class="fw-400" name="titleM">Month</p>
+        <input type="number" name="month" id="month" placeholder="mm" required="required" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;">
+        <p id="monthrerrormsg"  class="error-msg"></p>
+      </div>
+      <div class="block">
+        <p id="titleY" class="fw-400" name="titleY">Year</p>
+        <input type="number" name="year" id="year" placeholder="yyyy" required="required"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+
+        <p id="yearerrormsg"  class="error-msg"></p>
+      </div>
+    </div>
+    <div class="base-bottom">
+      <div class="enter">
+        <button type="button" name="submit" value="Submit" onclick="age()" >
+        
+        <img src="./assets/images/icon-arrow.svg" width="60" height="60" alt="arrow">
+
+        </button>
+      </div>
+    </div>
+<div class="result">
+
+    <div class="info">
+      <span id="years" name="years">--</span> years
+    </div>
+    <div class="info">
+      <span id="months" name="months">--</span> months
+    </div>
+    <div class="info">
+      <span id="days" name="days"> --</span> days
+    </div>
+  </div>
+
+  </form>
+</div>
+
+  </main>
+
+  <main>
+
+  </main>
+
+
+
+
+
+  <script type="text/javascript">
+
+
+    function age() {
+
+      var is_errord = false;
+
+      var d1 = document.getElementById('date').value;
+      var m1 = document.getElementById('month').value;
+      var y1 = document.getElementById('year').value;
+
+
+      /* If statements to check if text box is empty */
+      document.getElementById("dateerrormsg").innerHTML = "";
+      document.getElementById("monthrerrormsg").innerHTML = "";
+      document.getElementById("yearerrormsg").innerHTML = "";
+
+      var date = new Date();
+      var d2 = date.getDate();
+      var m2 = 1 + date.getMonth();
+      var y2 = date.getFullYear();
+
+
+      if (d1 == null || d1.length === 0) {
+        var errorOne = document.getElementById("dateerrormsg").innerHTML = "This filed is required";
+ 
+        validlabelRed();
+        is_errord = true;
+      }
+
+      if (m1 == null || m1.length === 0) {
+        var errorOne = document.getElementById("monthrerrormsg").innerHTML = "This filed is required";
+         validlabelRed();
+        is_errord = true;
+      }
+
+      if (y1 == null || y1.length === 0) {
+        var errorOne = document.getElementById("yearerrormsg").innerHTML = "This filed is required";
+         validlabelRed();
+        is_errord = true;
+      }
+
+
+      if (d1 > 31) {
+        var errorOne = document.getElementById("dateerrormsg").innerHTML = "Must be a Valid Day";
+        validlabelRed();
+        document.getElementById('days').innerHTML = "--";
+        is_errord = true;
+      }
+
+      if (m1 > 12) {
+        var errortwo = document.getElementById("monthrerrormsg").innerHTML = "Must be a Valid Month";
+        validlabelRed();
+        document.getElementById('months').innerHTML = "--";
+        is_errord = true;
+
+      }
+
+      if (y1 > y2) {
+        var errortwo = document.getElementById("yearerrormsg").innerHTML = "Must be a Valid Year";
+        validlabelRed();
+        document.getElementById('years').innerHTML = "--";
+        is_errord = true;
+      }
+
+      if (is_errord == false) {
+        validlabelBlack();
+        ClaculateDOB(d1, m1, y1);
+      }
+    }
+
+
+
+    function validlabelRed() {
+
+      document.getElementById('titleD').style.color = "red";
+      document.getElementById('titleM').style.color = "red";
+      document.getElementById('titleY').style.color = "red";
+
+    }
+    function validlabelBlack() {
+
+      document.getElementById('titleD').style.color = "black";
+      document.getElementById('titleM').style.color = "black";
+      document.getElementById('titleY').style.color = "black";
+
+
+    }
+
+
+    function ClaculateDOB(d1, m1, y1) {
+      var date = new Date();
+      var d2 = date.getDate();
+      var m2 = 1 + date.getMonth();
+      var y2 = date.getFullYear();
+      var month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+      if (d1 > d2) {
+        d2 = d2 + month[m2 - 1];
+        m2 = m2 - 1;
+
+
+      }
+      if (m1 > m2) {
+        m2 = m2 + 12;
+        y2 = y2 - 1;
+      }
+
+      var d = d2 - d1;
+      var m = m2 - m1;
+      var y = y2 - y1;
+
+
+      document.getElementById('years').innerHTML = y;
+      document.getElementById('days').innerHTML = d;
+      document.getElementById('months').innerHTML = m;
+    }
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+  <style>
+   
+ 
+  </style>
+
+</body>
+
+</html>
