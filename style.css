@@ -104,7 +104,7 @@ input[type=number] {
     justify-content: flex-end; margin-top: 40px;
 }
 
-p.fw-400 {
+.fw-400 {
     font-size: 12px;
     font-weight: lighter;
     color: var(--Smokey-grey);
