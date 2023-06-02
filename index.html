@@ -5,16 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- displays site properly based on user's device -->
+  <meta name="description" content="Frontend challenge completed ">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
 
-<!--custome css and font-->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
+  <!--custome css and font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+    rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 
 
   <title>Frontend Mentor | Age calculator app</title>
@@ -25,57 +27,57 @@
 
   <main class="container">
 
-<div  class="agecalculator">
-  <h1 class="hide"></h1>
-  <form name="frm">
-    <div class="base">
+    <div class="agecalculator">
+      <h1 class="hide">App</h1>
+      <form name="frm">
+        <div class="base">
 
-      <div class="block">
-        <p name="titleD" class="fw-400" id="titleD">DAY</p>
-        <input type="number" name="date" id="date" placeholder="dd" required="required" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;">
-        <p id="dateerrormsg" class="error-msg"></p>
-      </div>
-      <div class="block">
-        <p id="titleM" class="fw-400" name="titleM">Month</p>
-        <input type="number" name="month" id="month" placeholder="mm" required="required" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;">
-        <p id="monthrerrormsg"  class="error-msg"></p>
-      </div>
-      <div class="block">
-        <p id="titleY" class="fw-400" name="titleY">Year</p>
-        <input type="number" name="year" id="year" placeholder="yyyy" required="required"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+          <div class="block">
+            <p name="titleD" class="fw-400" id="titleD">DAY</p>
+            <input type="number" name="date" id="date" placeholder="dd" required="required"
+              onKeyPress="if(this.value.length==2) return false;">
+            <p id="dateerrormsg" class="error-msg"></p>
+          </div>
+          <div class="block">
+            <p id="titleM" class="fw-400">Month</p>
+            <input type="number" name="month" id="month" placeholder="mm" required="required"
+              onKeyPress="if(this.value.length==2) return false;">
+            <p id="monthrerrormsg" class="error-msg"></p>
+          </div>
+          <div class="block">
+            <p id="titleY" class="fw-400">Year</p>
+            <input type="number" name="year" id="year" placeholder="yyyy" required="required"
+              onKeyPress="if(this.value.length==4) return false;">
 
-        <p id="yearerrormsg"  class="error-msg"></p>
-      </div>
-    </div>
-    <div class="base-bottom">
-      <div class="enter">
-        <button type="button" name="submit" value="Submit" onclick="age()" >
-        
-        <img src="./assets/images/icon-arrow.svg" width="60" height="60" alt="arrow">
+            <p id="yearerrormsg" class="error-msg"></p>
+          </div>
+        </div>
+        <div class="base-bottom">
+          <div class="enter">
+            <button type="button" name="submit" value="Submit" onclick="age()">
 
-        </button>
-      </div>
-    </div>
-<div class="result">
+              <img src="./assets/images/icon-arrow.svg" width="60" height="60" alt="arrow">
 
-    <div class="info">
-      <span id="years" name="years">--</span> years
-    </div>
-    <div class="info">
-      <span id="months" name="months">--</span> months
-    </div>
-    <div class="info">
-      <span id="days" name="days"> --</span> days
-    </div>
-  </div>
+            </button>
+          </div>
+        </div>
+        <div class="result">
 
-  </form>
-</div>
+          <div class="info">
+            <span id="years">--</span> years
+          </div>
+          <div class="info">
+            <span id="months">--</span> months
+          </div>
+          <div class="info">
+            <span id="days">--</span> days
+          </div>
+        </div>
+
+      </form>
+    </div>
 
   </main>
- 
-
-
 
 
 
@@ -104,20 +106,20 @@
 
       if (d1 == null || d1.length === 0) {
         var errorOne = document.getElementById("dateerrormsg").innerHTML = "This filed is required";
- 
+
         validlabelRed();
         is_errord = true;
       }
 
       if (m1 == null || m1.length === 0) {
         var errorOne = document.getElementById("monthrerrormsg").innerHTML = "This filed is required";
-         validlabelRed();
+        validlabelRed();
         is_errord = true;
       }
 
       if (y1 == null || y1.length === 0) {
         var errorOne = document.getElementById("yearerrormsg").innerHTML = "This filed is required";
-         validlabelRed();
+        validlabelRed();
         is_errord = true;
       }
 
@@ -198,23 +200,7 @@
     }
 
 
-
-
-
-
-
-
-
-
   </script>
-
-
-
-  <style>
-   
- 
-  </style>
-
 </body>
 
 </html>
